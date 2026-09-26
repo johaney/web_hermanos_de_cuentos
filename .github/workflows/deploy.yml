@@ -54,4 +54,4 @@ jobs:
           rsync -av --no-perms --no-owner --no-group \
             -e 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -p 22' \
             index.html hermanos-leyendo.png \
-            su5020991@access-5019596432.webspace-host.com:/home/www/public/cuentos/
+            su502099@access-5019596432.webspace-host.com:/home/www/public/cuentos/
