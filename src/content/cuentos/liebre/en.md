@@ -8,7 +8,10 @@ minutos: 6
 color: "#b7dce6"
 orden: 6
 descripcion: "A race that shows how much steady steps matter."
-pregunta: "What are you learning step by step?"
+preguntas:
+  - "What did the hare do when she was far ahead in the race?"
+  - "Why do you think the tortoise won, even though she was slower?"
+  - "What are you learning step by step?"
 ---
 The hare ran so fast that she teased the tortoise. One day the tortoise suggested a race. The forest animals gathered to watch them start.
 

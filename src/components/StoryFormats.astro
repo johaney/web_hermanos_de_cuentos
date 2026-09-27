@@ -5,17 +5,14 @@ interface Props {
   lang: Lang;
   title: string;
   youtube?: string;
-  audio?: string;
 }
 
-const { lang, title, youtube, audio } = Astro.props;
+const { lang, title, youtube } = Astro.props;
 const t = ui[lang];
 const formats = [
   { id: 'leer', label: t.formatRead },
   youtube && { id: 'ver', label: t.formatWatch },
-  audio && { id: 'escuchar', label: t.formatListen },
 ].filter(Boolean) as { id: string; label: string }[];
-const audioSrc = audio && `${import.meta.env.BASE_URL.replace(/\/$/, '')}${audio}`;
 ---
 
 {
@@ -51,14 +48,6 @@ const audioSrc = audio && `${import.meta.env.BASE_URL.replace(/\/$/, '')}${audio
           <span class="play" aria-hidden="true">▶</span>
         </button>
       </div>
-    </div>
-  )
-}
-
-{
-  audioSrc && (
-    <div class="format-panel" id="panel-escuchar" role="tabpanel" aria-labelledby="tab-escuchar" hidden>
-      <audio class="audio" controls preload="none" src={audioSrc} />
     </div>
   )
 }

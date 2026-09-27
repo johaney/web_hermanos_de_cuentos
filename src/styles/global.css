@@ -122,8 +122,11 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
 .the-end { font: 600 34px/1 var(--hand); color: var(--fox); text-align: center; margin: 34px 0 0; }
 .reflection { position: relative; background: var(--card); border: 1.5px solid var(--line); padding: 28px 30px 24px; margin: 48px 0 40px; transform: rotate(-.6deg); box-shadow: 0 16px 30px -22px #16233f66; }
 .reflection::before { content: ''; position: absolute; top: -13px; left: 50%; width: 110px; height: 26px; margin-left: -55px; background: #2c647433; transform: rotate(2deg); }
-.reflection .hand { display: block; font-size: 27px; line-height: 1.1; }
-.reflection p { margin: 8px 0 0; font: 400 21px/1.5 var(--serif); }
+.reflection h2 { font-size: 30px; line-height: 1.1; margin: 0; }
+.reflection-intro { margin: 6px 0 18px; color: var(--ink-soft); font-size: 16px; }
+.reflection ol { list-style: none; counter-reset: q; margin: 0; padding: 0; display: grid; gap: 14px; }
+.reflection li { counter-increment: q; display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; font: 400 20px/1.45 var(--serif); }
+.reflection li::before { content: counter(q); display: grid; place-items: center; width: 34px; height: 34px; margin-top: -1px; border: 2px solid var(--fox); border-radius: 50% 46% 52% 48%; font: 700 21px/1 var(--hand); color: var(--fox); }
 .not-found { text-align: center; }
 
 /* Formatos: leer / ver / escuchar */
@@ -134,7 +137,23 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
 .video button { padding: 0; background: none; }
 .video img { object-fit: cover; }
 .video .play { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 78px; height: 78px; border-radius: 50%; background: var(--amber); color: var(--night); display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 4px 4px 0 var(--night); }
-.audio { width: 100%; }
+.narration { margin: 0 0 38px; }
+.narration audio { width: 100%; }
+.narration-ui { display: flex; align-items: center; gap: 18px; background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 18px; box-shadow: 0 14px 28px -22px #16233f66; }
+.narration-ui[hidden] { display: none; }
+.narration-play { flex: none; width: 58px; height: 58px; border: 0; border-radius: 50%; background: var(--night); color: var(--paper); display: grid; place-items: center; box-shadow: 3px 3px 0 var(--amber); transition: transform .15s, box-shadow .15s; }
+.narration-play:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--amber); }
+.narration-play svg { width: 26px; height: 26px; }
+.narration .icon-pause, .narration.playing .icon-play { display: none; }
+.narration.playing .icon-pause { display: block; }
+.narration-main { flex: 1; min-width: 0; }
+.narration-main .hand { font-size: 24px; line-height: 1; margin: 0 0 8px; }
+.narration-progress { --p: 0%; -webkit-appearance: none; appearance: none; width: 100%; height: 8px; margin: 0; border-radius: 8px; background: linear-gradient(90deg, var(--amber) var(--p), var(--paper-deep) var(--p)); cursor: pointer; }
+.narration-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--night); border: 3px solid var(--card); box-shadow: 0 0 0 1.5px var(--night); }
+.narration-progress::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--night); border: 3px solid var(--card); box-shadow: 0 0 0 1.5px var(--night); }
+.narration-times { display: flex; justify-content: space-between; margin: 6px 0 0; font-size: 14px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.narration-speed { flex: none; min-width: 56px; border: 1.5px solid var(--line); background: none; border-radius: 6px; padding: 6px 8px; font-weight: 700; color: var(--teal); font-variant-numeric: tabular-nums; }
+.narration-speed:hover { border-color: var(--teal); }
 
 /* Pie */
 .site-footer { margin-top: 20px; color: var(--night); }
@@ -172,6 +191,9 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
   .story-lead { font-size: 20px; }
   .cover-page { border-radius: 90px 90px 6px 6px; }
   .reflection { padding: 26px 22px 22px; }
+  .reflection li { font-size: 18px; grid-template-columns: 32px 1fr; }
+  .narration-ui { gap: 12px; padding: 12px 14px; }
+  .narration-play { width: 50px; height: 50px; }
   .footer-body .wrap { flex-direction: column; align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {

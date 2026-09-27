@@ -8,7 +8,10 @@ minutos: 7
 color: "#b9d9e4"
 orden: 10
 descripcion: "Un pequeño pájaro busca su lugar y descubre quién es."
-pregunta: "¿Qué cualidad tuya te gusta, aunque sea distinta a la de los demás?"
+preguntas:
+  - "¿Qué descubrió el patito al ver su reflejo en primavera?"
+  - "¿Cómo crees que se sentía el patito cuando los demás hacían comentarios sobre él?"
+  - "¿Qué cualidad tuya te gusta, aunque sea distinta a la de los demás?"
 ---
 En un nido junto al estanque nacieron varios patitos. El último huevo tardó más en abrirse. De él salió un polluelo grande y gris, diferente de los demás. Algunos animales hicieron comentarios que lo entristecieron.
 

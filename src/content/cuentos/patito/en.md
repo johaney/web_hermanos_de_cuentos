@@ -8,7 +8,10 @@ minutos: 7
 color: "#b9d9e4"
 orden: 10
 descripcion: "A young bird searches for a place to belong and discovers who he is."
-pregunta: "What do you like about yourself that is different from other people?"
+preguntas:
+  - "What did the duckling discover when he saw his reflection in spring?"
+  - "How do you think the duckling felt when others made remarks about him?"
+  - "What do you like about yourself that is different from other people?"
 ---
 In a nest beside a pond, several ducklings hatched. The last egg took longer to open. Out came a big gray chick who looked different from the others. Some of the animals made unkind remarks that saddened him.
 

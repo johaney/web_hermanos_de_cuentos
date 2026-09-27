@@ -8,7 +8,10 @@ minutos: 6
 color: "#c6c5ec"
 orden: 5
 descripcion: "A Bible story about care, hope, and new beginnings."
-pregunta: "What gives you hope when something difficult happens?"
+preguntas:
+  - "What did Noah and his family do while they waited inside the ark?"
+  - "Why was the rainbow a sign of hope for them?"
+  - "What gives you hope when something difficult happens?"
 ---
 According to the Bible story, God asked Noah to build a large ark. Noah made room for his family and for animals of many kinds.
 

@@ -8,7 +8,10 @@ minutos: 6
 color: "#b9d8c7"
 orden: 2
 descripcion: "A child-friendly retelling of the parable of the Good Samaritan."
-pregunta: "How could you help someone who needs it?"
+preguntas:
+  - "What did the Samaritan do to help the traveler?"
+  - "Why do you think some people walked past without helping?"
+  - "How could you help someone who needs it?"
 ---
 Jesus once told a story about a traveler on a long road. On the way, he was hurt and sat by the roadside, waiting for help.
 

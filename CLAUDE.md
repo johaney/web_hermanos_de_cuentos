@@ -22,10 +22,12 @@ Web de cuentos infantiles bilingüe (español / inglés) pensada para que **madr
 - Nota final: "Un rincón para leer con calma".
 
 ### Página de cuento
+Estructura completa y cómo añadir contenido: **[docs/plantilla-cuento.md](docs/plantilla-cuento.md)**.
 - Meta (categoría · minutos de lectura · edad), título, entradilla, portada (ilustración o dibujo provisional), texto por párrafos con capitular y "Fin".
-- Recuadro "Para conversar después del cuento" con una pregunta de reflexión.
+- **Narración** (opcional, por idioma): reproductor propio encima del texto (play/pausa, progreso, velocidad 1×/0,75×/1,25×) para leer mientras se escucha.
+- **Vídeo** (opcional, por idioma): si existe, aparecen las pestañas Leer / Ver el vídeo.
+- **Para conversar después del cuento**: hasta 3 preguntas de comprensión lectora (recordar, pensar, conectar).
 - Enlaces para volver al catálogo.
-- **Formatos**: pestañas 📖 Leer · ▶️ Ver · 🎧 Escuchar. Solo aparecen los formatos disponibles para ese cuento (el texto siempre existe; vídeo y audio son opcionales y por idioma).
 
 ### Idiomas
 - Español (por defecto) e inglés, cada uno con sus propias URL indexables.
@@ -69,6 +71,7 @@ src/
     es.md                    # versión en español (frontmatter + texto)
     en.md                    # versión en inglés
     portada.png              # opcional: ilustración del cuento (png/jpg/webp)
+    narracion-es.mp3         # opcional: narración por idioma (mp3/m4a)
   assets/                    # imágenes procesadas por Astro
   components/                # Header, Footer, StoryCard, StoryFormats, …
   layouts/BaseLayout.astro
@@ -100,9 +103,11 @@ minutos: 6                              # minutos de lectura
 color: "#f9d68d"                        # fondo de portada
 orden: 1                                # posición en el catálogo
 descripcion: Una estrella descubre que al ayudar a otras, su brillo no se apaga.
-pregunta: ¿Qué cosa pequeña podrías compartir hoy con alguien?
+preguntas:                              # 1 a 3: recordar, pensar, conectar
+  - ¿Qué le pidió el pajarito a Lía?
+  - ¿Por qué crees que la luz de Lía no se apagó al compartirla?
+  - ¿Qué cosa pequeña podrías compartir hoy con alguien?
 youtube: dQw4w9WgXcQ                    # opcional: ID del vídeo de YouTube
-audio: /audio/estrella-es.mp3           # opcional: archivo en public/audio/
 ---
 Párrafos del cuento en Markdown…
 ```
@@ -124,7 +129,7 @@ La URL pública (`site`, necesaria para sitemap, canónicas y hreflang) es `http
 
 ### Formatos multimedia
 - **Vídeo**: fachada con miniatura; el `iframe` de `youtube-nocookie.com` solo se carga al pulsar. Los vídeos deberán marcarse en YouTube como "contenido para niños".
-- **Audio**: MP3 por idioma en `public/audio/`, reproductor nativo `<audio>`.
+- **Narración**: `narracion-<idioma>.mp3` en la carpeta del cuento, detectada con `import.meta.glob` en `src/lib/stories.ts` y servida con hash desde `_astro/`. `NarrationPlayer.astro` mejora un `<audio controls>` nativo (funciona sin JavaScript).
 
 ## Monetización (fase 3, pendiente)
 
@@ -159,7 +164,8 @@ npm run preview    # servir dist/ en local
 
 - [x] Fase 0 — Análisis y este documento.
 - [x] Fase 1 — Migración a Astro con el mismo diseño, una página por cuento, ES/EN, imagen optimizada y redirección de enlaces antiguos.
-- [ ] Fase 2 — Formatos: pestañas Leer/Ver/Escuchar con vídeo y audio opcionales. *Componente listo (`StoryFormats`); falta añadir vídeos y audios reales.*
+- [x] Rediseño "libro ilustrado" ([docs/diseno.md](docs/diseno.md)).
+- [ ] Fase 2 — Formatos: narración, vídeo y 3 preguntas de comprensión. *Plantilla lista ([docs/plantilla-cuento.md](docs/plantilla-cuento.md)); faltan portadas, narraciones y vídeos reales.*
 - [ ] Fase 3 — Monetización: AdSense, consentimiento, páginas legales, `ads.txt`, sitemap.
 - [ ] Fase 4 — Actualizar el workflow de GitHub Actions y la configuración de IONOS. *Workflow listo; pendiente la primera publicación.*
 

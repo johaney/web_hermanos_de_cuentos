@@ -8,7 +8,10 @@ minutos: 6
 color: "#f9d68d"
 orden: 1
 descripcion: "A star discovers that helping others does not dim her glow."
-pregunta: "What little thing could you share with someone today?"
+preguntas:
+  - "What did the little bird ask Lia when the dark cloud covered his path?"
+  - "Why do you think Lia’s light did not fade when she shared it?"
+  - "What little thing could you share with someone today?"
 ---
 High in the sky lived Lia, a little star who guarded her light carefully. Each night she shone only a little, afraid of running out of brightness.
 

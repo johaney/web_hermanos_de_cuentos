@@ -18,8 +18,8 @@ Después abre `http://localhost:4321`.
 ## Añadir un cuento
 
 1. Crea la carpeta `src/content/cuentos/<clave>/` (por ejemplo `pinocho`).
-2. Añade `es.md` y `en.md` copiando el formato de otro cuento.
-3. Opcional: añade `youtube:` (ID del vídeo) o `audio:` (archivo en `public/audio/`).
+2. Añade `es.md` y `en.md` siguiendo [docs/plantilla-cuento.md](docs/plantilla-cuento.md).
+3. Opcional: `portada.png`, `narracion-es.mp3` / `narracion-en.mp3` en la misma carpeta, y `youtube:` en el texto.
 4. `npm run build` comprueba que todo esté correcto.
 
 ## Publicar

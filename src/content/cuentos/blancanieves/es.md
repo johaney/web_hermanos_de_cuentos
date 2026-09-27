@@ -8,7 +8,10 @@ minutos: 7
 color: "#d4c9ee"
 orden: 9
 descripcion: "Blancanieves encuentra amistad y un hogar en el bosque."
-pregunta: "¿Qué hace que te sientas bienvenido en un lugar?"
+preguntas:
+  - "¿Quiénes vivían en la casita de las siete sillas?"
+  - "¿Por qué crees que Blancanieves decidió vivir cerca de sus amigos?"
+  - "¿Qué hace que te sientas bienvenido en un lugar?"
 ---
 Blancanieves vivía en un castillo con una reina que deseaba ser admirada por todos. Un día la reina se enfadó al pensar que la joven era más querida que ella. Blancanieves se marchó al bosque para buscar un lugar tranquilo y seguro.
 

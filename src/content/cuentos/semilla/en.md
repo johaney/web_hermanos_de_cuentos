@@ -8,7 +8,10 @@ minutos: 5
 color: "#a9d9c4"
 orden: 3
 descripcion: "Mara learns that beautiful things sometimes take time."
-pregunta: "What do you enjoy caring for, even when it takes time to grow?"
+preguntas:
+  - "What did her grandfather explain to Mara about seeds?"
+  - "Why do you think her grandfather suggested drawing the pot every afternoon?"
+  - "What do you enjoy caring for, even when it takes time to grow?"
 ---
 Mara planted a seed in a blue pot and watered it carefully. The next morning she ran to see it. The soil looked just the same.
 

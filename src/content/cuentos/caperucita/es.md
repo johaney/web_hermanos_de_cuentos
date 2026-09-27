@@ -8,7 +8,10 @@ minutos: 6
 color: "#eeb7a4"
 orden: 7
 descripcion: "Una visita a la abuela se convierte en una aventura por el bosque."
-pregunta: "¿Qué harías si alguien desconocido te preguntara adónde vas?"
+preguntas:
+  - "¿Qué consejo le dio su madre a Caperucita antes de salir?"
+  - "¿Cómo se dio cuenta Caperucita de que algo no iba bien en casa de su abuela?"
+  - "¿Qué harías si alguien desconocido te preguntara adónde vas?"
 ---
 Caperucita Roja vivía cerca de un bosque. Una mañana preparó una cesta con pan y fruta para su abuela, que estaba descansando en casa. Su madre le indicó el camino y le recordó: «Ve directamente y no compartas tus planes con desconocidos».
 

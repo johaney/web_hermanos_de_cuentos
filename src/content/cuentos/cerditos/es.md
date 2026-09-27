@@ -8,7 +8,10 @@ minutos: 6
 color: "#f5c7a6"
 orden: 8
 descripcion: "Tres hermanos construyen casas distintas y descubren la fuerza de ayudarse."
-pregunta: "¿Qué tarea te gustaría hacer con tus hermanos o amigos?"
+preguntas:
+  - "¿Con qué material construyó su casa cada cerdito?"
+  - "¿Por qué la casa de ladrillos resistió cuando el lobo sopló?"
+  - "¿Qué tarea te gustaría hacer con tus hermanos o amigos?"
 ---
 Tres cerditos decidieron construir sus propias casas al borde del bosque. El primero quería jugar cuanto antes y levantó una casa de paja. El segundo usó madera y terminó aquella tarde. El tercero eligió ladrillos, preparó una base firme y trabajó varios días.
 

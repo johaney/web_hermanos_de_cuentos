@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import StoryFormats from './StoryFormats.astro';
 import StoryCover from './StoryCover.astro';
 import Ornament from './Ornament.astro';
+import NarrationPlayer from './NarrationPlayer.astro';
 import { ui, homeUrl, storyUrl, ageLabel, type Lang } from '../i18n/ui';
 import type { Story } from '../lib/stories';
 
@@ -17,6 +18,7 @@ const t = ui[lang];
 const entry = story.versions[lang];
 const v = entry.data;
 const { Content } = await render(entry);
+const narration = story.narration[lang];
 ---
 
 <BaseLayout
@@ -42,13 +44,17 @@ const { Content } = await render(entry);
         <Ornament />
       </header>
       <StoryCover story={story} variant="page" />
-      <StoryFormats lang={lang} title={v.titulo} youtube={v.youtube} audio={v.audio}>
+      <StoryFormats lang={lang} title={v.titulo} youtube={v.youtube}>
+        {narration && <NarrationPlayer lang={lang} src={narration} />}
         <div class="story-text"><Content /></div>
         <p class="the-end">{t.theEnd}</p>
       </StoryFormats>
-      <aside class="reflection">
-        <strong class="hand">{t.reflection}</strong>
-        <p>{v.pregunta}</p>
+      <aside class="reflection" aria-labelledby="reflection-title">
+        <h2 class="hand" id="reflection-title">{t.reflection}</h2>
+        <p class="reflection-intro">{t.reflectionIntro}</p>
+        <ol>
+          {v.preguntas.map((q) => <li>{q}</li>)}
+        </ol>
       </aside>
       <a class="back" href={`${homeUrl(lang)}#catalogo`}>{t.again}</a>
     </div>

@@ -8,7 +8,10 @@ minutos: 6
 color: "#c6c5ec"
 orden: 5
 descripcion: "Un relato bíblico de cuidado, esperanza y nuevos comienzos."
-pregunta: "¿Qué te hace sentir esperanza cuando pasa algo difícil?"
+preguntas:
+  - "¿Qué hacían Noé y su familia mientras esperaban dentro del arca?"
+  - "¿Por qué el arcoíris fue una señal de esperanza para ellos?"
+  - "¿Qué te hace sentir esperanza cuando pasa algo difícil?"
 ---
 Según el relato bíblico, Dios pidió a Noé que construyera un arca grande. Noé preparó un lugar para su familia y para animales de muchas clases.
 

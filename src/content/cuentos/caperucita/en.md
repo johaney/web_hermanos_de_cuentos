@@ -8,7 +8,10 @@ minutos: 6
 color: "#eeb7a4"
 orden: 7
 descripcion: "A visit to Grandma becomes an adventure through the woods."
-pregunta: "What would you do if a stranger asked where you were going?"
+preguntas:
+  - "What advice did her mother give Little Red Riding Hood before she left?"
+  - "How did Little Red Riding Hood realize something was wrong at Grandma’s house?"
+  - "What would you do if a stranger asked where you were going?"
 ---
 Little Red Riding Hood lived near a forest. One morning, she packed bread and fruit for her grandmother, who was resting at home. Her mother showed her the path and said, “Go straight there, and do not tell strangers your plans.”
 
