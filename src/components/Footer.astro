@@ -1,0 +1,12 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+
+const { lang } = Astro.props as { lang: Lang };
+---
+
+<footer>
+  <div class="wrap">
+    <strong>✦ Hermanos de cuento</strong>
+    <span>{ui[lang].footer}</span>
+  </div>
+</footer>

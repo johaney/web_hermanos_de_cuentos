@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ui, homeUrl } from '../i18n/ui';
+
+const t = ui.es;
+---
+
+<BaseLayout
+  lang="es"
+  title={`${t.notFoundTitle} — Hermanos de cuento`}
+  description={t.notFoundBody}
+  alternates={{ es: homeUrl('es'), en: homeUrl('en') }}
+>
+  <article class="story">
+    <div class="story-inner">
+      <div class="story-illustration" style="background:#c6c5ec" aria-hidden="true">📚</div>
+      <h1>{t.notFoundTitle}</h1>
+      <p class="story-lead">{t.notFoundBody}</p>
+      <p class="story-lead" lang="en">{ui.en.notFoundBody}</p>
+      <a class="back" href={homeUrl('es')}>{t.back}</a> · <a class="back" href={homeUrl('en')} lang="en">{ui.en.back}</a>
+    </div>
+  </article>
+</BaseLayout>

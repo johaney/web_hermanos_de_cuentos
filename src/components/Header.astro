@@ -1,0 +1,31 @@
+---
+import { languages, ui, homeUrl, categoryUrl, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  alternates: Record<Lang, string>;
+}
+
+const { lang, alternates } = Astro.props;
+const t = ui[lang];
+---
+
+<header>
+  <div class="wrap top">
+    <a class="brand" href={homeUrl(lang)}>✦ Hermanos <span>de cuento</span></a>
+    <nav aria-label={t.navLabel}>
+      <a href={`${homeUrl(lang)}#catalogo`}>{t.nav.stories}</a>
+      <a href={categoryUrl(lang, 'biblicos')}>{t.nav.biblicos}</a>
+      <a href={categoryUrl(lang, 'valores')}>{t.nav.valores}</a>
+    </nav>
+    <div class="language" role="group" aria-label={t.langLabel}>
+      {
+        languages.map((l) => (
+          <a href={alternates[l]} lang={l} hreflang={l} aria-current={l === lang ? 'page' : undefined}>
+            {l.toUpperCase()}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>

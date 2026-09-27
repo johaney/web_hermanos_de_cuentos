@@ -1,0 +1,40 @@
+---
+import { homeUrl, storyUrl } from '../i18n/ui';
+import { getStories } from '../lib/stories';
+
+// Redirige al idioma guardado (o al del navegador) y convierte los enlaces antiguos /#clave.
+const stories = await getStories();
+const routes = {
+  homes: { es: homeUrl('es'), en: homeUrl('en') },
+  stories: Object.fromEntries(
+    stories.map((s) => [
+      s.key,
+      { es: storyUrl('es', s.versions.es.data.slug), en: storyUrl('en', s.versions.en.data.slug) },
+    ]),
+  ),
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Hermanos de cuento</title>
+    <noscript><meta http-equiv="refresh" content={`0; url=${routes.homes.es}`} /></noscript>
+    <script is:inline define:vars={{ routes }}>
+      let lang = 'es';
+      try {
+        const saved = localStorage.getItem('storyLanguage');
+        if (saved === 'en' || saved === 'es') lang = saved;
+        else if (navigator.language.toLowerCase().startsWith('en')) lang = 'en';
+      } catch {}
+      const story = routes.stories[decodeURIComponent(location.hash.slice(1))];
+      location.replace(story ? story[lang] : routes.homes[lang]);
+    </script>
+  </head>
+  <body>
+    <p><a href={routes.homes.es}>Hermanos de cuento</a> · <a href={routes.homes.en}>English</a></p>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoryCard from './StoryCard.astro';
+import heroImage from '../assets/hermanos-leyendo.png';
+import { ui, homeUrl, type Lang, type Category } from '../i18n/ui';
+import { getStories } from '../lib/stories';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+const stories = await getStories();
+const filters = Object.keys(t.categories) as Category[];
+---
+
+<BaseLayout
+  lang={lang}
+  title={t.siteTitle}
+  description={t.siteDescription}
+  alternates={{ es: homeUrl('es'), en: homeUrl('en') }}
+>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">{t.eyebrow}</div>
+        <h1>{t.heroTitle}</h1>
+        <p>{t.heroBody}</p>
+        <a class="hint" href="#catalogo">{t.explore}</a>
+      </div>
+      <div class="hero-art">
+        <Image
+          src={heroImage}
+          alt={t.heroAlt}
+          widths={[640, 960, 1280, 1536]}
+          sizes="(max-width: 1160px) 100vw, 1112px"
+          format="webp"
+          quality={78}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap catalog" id="catalogo">
+    <div class="intro">
+      <div>
+        <h2>{t.catalogTitle}</h2>
+        <p>{t.catalogBody}</p>
+      </div>
+      <input class="search" id="search" type="search" placeholder={t.search} aria-label={t.search} />
+    </div>
+    <div class="filters" role="group" aria-label={t.filtersLabel}>
+      {
+        filters.map((c) => (
+          <button type="button" class="chip" data-filter={c} aria-pressed={c === 'todos'}>
+            {t.categories[c]}
+          </button>
+        ))
+      }
+    </div>
+    <div class="cards" id="cards">
+      {stories.map((story) => <StoryCard story={story} lang={lang} />)}
+    </div>
+    <p class="empty" id="empty" hidden>{t.empty}</p>
+    <div class="note">
+      <div>
+        <h3>{t.noteTitle}</h3>
+        <p>{t.noteBody}</p>
+      </div>
+      <small>{t.noteSmall}</small>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>('#search')!;
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('.card')];
+  const empty = document.querySelector<HTMLElement>('#empty')!;
+  const validFilters = chips.map((chip) => chip.dataset.filter);
+
+  const params = new URLSearchParams(location.search);
+  let current = validFilters.includes(params.get('categoria') ?? '') ? params.get('categoria')! : 'todos';
+
+  function render() {
+    const query = search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    chips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.filter === current)));
+    let visible = 0;
+    for (const card of cards) {
+      const show =
+        (current === 'todos' || card.dataset.category === current) &&
+        card.dataset.search!.includes(query);
+      card.hidden = !show;
+      if (show) visible++;
+    }
+    empty.hidden = visible > 0;
+  }
+
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      current = chip.dataset.filter!;
+      const url = new URL(location.href);
+      if (current === 'todos') url.searchParams.delete('categoria');
+      else url.searchParams.set('categoria', current);
+      history.replaceState(null, '', url);
+      render();
+    }),
+  );
+  search.addEventListener('input', render);
+  render();
+</script>
