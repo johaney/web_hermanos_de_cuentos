@@ -42,8 +42,12 @@ Estructura completa y cómo añadir contenido: **[docs/plantilla-cuento.md](docs
 | `valores` | Valores | Values |
 | `tradicionales` | Tradicionales | Classics |
 
-### Cuentos actuales (11)
-estrella, samaritano, semilla, leon, noe, liebre, caperucita, cerditos, blancanieves, patito, ricitos.
+### Cuentos actuales (30)
+- **Bíblicos (11)**: samaritano, noe, david, jonas, jose, moises, daniel, panes, zaqueo, prodigo, belen.
+- **Valores (2)**: estrella, semilla.
+- **Tradicionales (17)**: leon, liebre, caperucita, cerditos, blancanieves, patito, ricitos, hansel, sopa, bremen, cenicienta, emperador, nabo, zapatero, habichuelas, cigarra, raton.
+
+Los cuentos 1–11 tienen unas 250 palabras; los 12–30, entre 800 y 1000 (8–10 minutos de lectura). Todos son versiones propias: tramas de dominio público o relatos bíblicos contados con nuestras palabras, sin copiar libros, traducciones concretas de la Biblia ni películas.
 
 ## Estado anterior (antes de la migración)
 
