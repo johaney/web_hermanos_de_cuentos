@@ -96,6 +96,9 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
 .cover-card { aspect-ratio: 16 / 10; border-radius: 1px 8px 0 0; border-bottom: 1.5px solid var(--line); }
 .cover-page { aspect-ratio: 16 / 9; border-radius: 160px 160px 6px 6px; margin: 34px 0 40px; border: 1.5px solid var(--line); }
 .cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* En la página, la ilustración se ve completa en su proporción original y con un arco más suave. */
+.cover-page.illustrated { aspect-ratio: auto; border-radius: 56px 56px 6px 6px; }
+.cover-page.illustrated img { height: auto; }
 .cover .motif { position: absolute; inset: 12% 14% 4%; width: 72%; height: 84%; }
 .card:nth-child(3n+2) .motif { transform: rotate(2deg); }
 .card:nth-child(3n) .motif { transform: rotate(-2deg) scaleX(-1); }
@@ -128,6 +131,18 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
 .reflection li { counter-increment: q; display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; font: 400 20px/1.45 var(--serif); }
 .reflection li::before { content: counter(q); display: grid; place-items: center; width: 34px; height: 34px; margin-top: -1px; border: 2px solid var(--fox); border-radius: 50% 46% 52% 48%; font: 700 21px/1 var(--hand); color: var(--fox); }
 .not-found { text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Libro recomendado (afiliados) */
+.book-rec { display: grid; grid-template-columns: 130px 1fr; gap: 28px; align-items: center; margin: 0 0 44px; padding: 28px 0; border-top: 1.5px dashed var(--line); border-bottom: 1.5px dashed var(--line); }
+.book-rec-cover { position: relative; aspect-ratio: 3 / 4.2; display: flex; align-items: center; padding: 14px 12px 14px 20px; background: var(--cover) var(--grain); border-radius: 3px 8px 8px 3px; box-shadow: inset 8px 0 0 #16233f26, inset 10px 0 0 #ffffff30, 6px 8px 0 var(--paper-deep), 6px 8px 0 1.5px var(--line); transform: rotate(-3deg); }
+.book-rec-cover span { font: 700 16px/1.15 var(--serif); color: var(--night); text-align: center; width: 100%; border-top: 1.5px solid #16233f55; border-bottom: 1.5px solid #16233f55; padding: 8px 0; overflow-wrap: anywhere; }
+.book-rec-body .hand { font-size: 25px; line-height: 1.1; margin: 0; }
+.book-rec h2 { font: 800 27px/1.15 var(--serif); color: var(--night); margin: 6px 0 2px; }
+.book-rec-author { margin: 0; color: var(--ink-soft); font-style: italic; }
+.book-rec-note { margin: 10px 0 0; line-height: 1.5; }
+.book-rec .button { margin-top: 18px; padding: 11px 20px; }
+.book-rec-disclosure { margin: 14px 0 0; font-size: 13px; line-height: 1.45; color: var(--ink-soft); }
 
 /* Formatos: leer / ver / escuchar */
 .formats { display: flex; justify-content: center; gap: 8px 26px; flex-wrap: wrap; margin: 0 0 30px; }
@@ -190,10 +205,13 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
   .story-text { font-size: 19px; }
   .story-lead { font-size: 20px; }
   .cover-page { border-radius: 90px 90px 6px 6px; }
+  .cover-page.illustrated { border-radius: 32px 32px 6px 6px; }
   .reflection { padding: 26px 22px 22px; }
   .reflection li { font-size: 18px; grid-template-columns: 32px 1fr; }
   .narration-ui { gap: 12px; padding: 12px 14px; }
   .narration-play { width: 50px; height: 50px; }
+  .book-rec { grid-template-columns: 92px 1fr; gap: 20px; align-items: start; }
+  .book-rec-cover span { font-size: 12px; }
   .footer-body .wrap { flex-direction: column; align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {

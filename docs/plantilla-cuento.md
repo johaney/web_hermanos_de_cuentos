@@ -25,7 +25,8 @@ Los archivos opcionales se detectan solos: no hay que declararlos en ningún sit
    - **Fin**.
 6. **Pestaña Ver el vídeo**: vídeo de YouTube (se carga al pulsar). Al cambiar de pestaña se pausa la narración.
 7. **Para conversar después del cuento**: las preguntas numeradas.
-8. **← Elegir otro cuento**
+8. **Libro recomendado** (opcional, si el texto tiene `libro`): enlace de afiliado con su aviso legal.
+9. **← Elegir otro cuento**
 
 ## Archivo de texto (`es.md`)
 
@@ -45,6 +46,11 @@ preguntas:
   - "Pregunta para pensar: ¿por qué crees que…?"
   - "Pregunta para ti: ¿alguna vez…?"
 youtube: aqz-KE-bpKQ                # opcional: ID del vídeo (lo que va tras v= en la URL)
+libro:                              # opcional: libro recomendado (afiliados)
+  titulo: "Título del libro"
+  autor: "Nombre del autor"
+  asin: "XXXXXXXXXX"                # código de Amazon (ver abajo); o bien `url:` con un enlace completo
+  nota: "Por qué lo recomendamos, en una frase."   # opcional
 ---
 Primer párrafo del cuento.
 
@@ -69,3 +75,16 @@ Frases cortas, vocabulario del propio cuento y sin respuestas de sí/no.
 - Nombre exacto: `narracion-es.mp3` / `narracion-en.mp3`.
 - Leer el mismo texto que aparece en la página, para que el niño pueda seguirlo.
 - Si solo hay narración en un idioma, el reproductor solo aparece en ese idioma.
+
+## Libro recomendado (afiliados de Amazon)
+
+1. Date de alta en el **Programa de Afiliados de Amazon** de cada tienda: afiliados.amazon.es para español y affiliate-program.amazon.com para inglés.
+2. Copia tu **ID de afiliado** (por ejemplo `hermanosdecuento-21`) en `src/config.ts`, en el campo `tag` de cada idioma. Se añade solo a todos los enlaces.
+3. En cada cuento, añade `libro:` en `es.md` y, si quieres, otro distinto en `en.md` (las ediciones cambian por idioma).
+4. El **ASIN** es el código de 10 caracteres del libro en Amazon. Aparece en la URL (`amazon.es/dp/XXXXXXXXXX`) o en "Detalles del producto" (en libros, suele coincidir con el ISBN-10).
+
+Recomendaciones:
+- Un libro que de verdad tenga relación con el cuento: la misma fábula ilustrada, otra obra del autor, un libro sobre el mismo valor.
+- Revisa que la edición esté disponible y sea adecuada para la edad del cuento.
+- El aviso "Como Afiliado de Amazon, obtenemos ingresos…" es obligatorio y ya aparece solo junto al enlace; no lo quites.
+- Amazon cierra la cuenta si no hay 3 ventas en los primeros 180 días; conviene darse de alta cuando la web ya tenga algo de tráfico.

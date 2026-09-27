@@ -5,6 +5,7 @@ import StoryFormats from './StoryFormats.astro';
 import StoryCover from './StoryCover.astro';
 import Ornament from './Ornament.astro';
 import NarrationPlayer from './NarrationPlayer.astro';
+import RecommendedBook from './RecommendedBook.astro';
 import { ui, homeUrl, storyUrl, ageLabel, type Lang } from '../i18n/ui';
 import type { Story } from '../lib/stories';
 
@@ -56,6 +57,7 @@ const narration = story.narration[lang];
           {v.preguntas.map((q) => <li>{q}</li>)}
         </ol>
       </aside>
+      {v.libro && <RecommendedBook lang={lang} book={v.libro} color={v.color} />}
       <a class="back" href={`${homeUrl(lang)}#catalogo`}>{t.again}</a>
     </div>
   </article>
