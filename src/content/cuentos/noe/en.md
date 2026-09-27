@@ -5,7 +5,6 @@ categoria: biblicos
 etiqueta: "Hope"
 edad: [4, 8]
 minutos: 6
-emoji: "🌈"
 color: "#c6c5ec"
 orden: 5
 descripcion: "A Bible story about care, hope, and new beginnings."

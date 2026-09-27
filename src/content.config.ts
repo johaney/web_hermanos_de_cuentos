@@ -19,7 +19,6 @@ const cuentos = defineCollection({
     etiqueta: z.string(),
     edad: z.tuple([z.number().int(), z.number().int()]),
     minutos: z.number().int().positive(),
-    emoji: z.string(),
     color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
     orden: z.number().int(),
     descripcion: z.string(),

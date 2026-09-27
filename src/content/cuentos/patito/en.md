@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Self-acceptance"
 edad: [5, 9]
 minutos: 7
-emoji: "🦢"
 color: "#b9d9e4"
 orden: 10
 descripcion: "A young bird searches for a place to belong and discovers who he is."

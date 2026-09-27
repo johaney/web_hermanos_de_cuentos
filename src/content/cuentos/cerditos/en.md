@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Working together"
 edad: [4, 8]
 minutos: 6
-emoji: "🐷"
 color: "#f5c7a6"
 orden: 8
 descripcion: "Three siblings build different houses and discover the power of helping one another."

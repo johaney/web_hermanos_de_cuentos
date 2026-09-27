@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Aceptarse"
 edad: [5, 9]
 minutos: 7
-emoji: "🦢"
 color: "#b9d9e4"
 orden: 10
 descripcion: "Un pequeño pájaro busca su lugar y descubre quién es."

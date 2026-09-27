@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CategoryMotif from '../components/CategoryMotif.astro';
 import { ui, homeUrl } from '../i18n/ui';
 
 const t = ui.es;
@@ -12,12 +13,12 @@ const t = ui.es;
   alternates={{ es: homeUrl('es'), en: homeUrl('en') }}
 >
   <article class="story">
-    <div class="story-inner">
-      <div class="story-illustration" style="background:#c6c5ec" aria-hidden="true">📚</div>
+    <div class="story-inner not-found">
+      <div class="cover cover-page" style="--cover:#c9d6de"><CategoryMotif category="tradicionales" /></div>
       <h1>{t.notFoundTitle}</h1>
       <p class="story-lead">{t.notFoundBody}</p>
       <p class="story-lead" lang="en">{ui.en.notFoundBody}</p>
-      <a class="back" href={homeUrl('es')}>{t.back}</a> · <a class="back" href={homeUrl('en')} lang="en">{ui.en.back}</a>
+      <p><a class="back" href={homeUrl('es')}>{t.back}</a> · <a class="back" href={homeUrl('en')} lang="en">{ui.en.back}</a></p>
     </div>
   </article>
 </BaseLayout>

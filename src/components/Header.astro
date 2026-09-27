@@ -1,4 +1,5 @@
 ---
+import LogoMark from './LogoMark.astro';
 import { languages, ui, homeUrl, categoryUrl, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -10,9 +11,12 @@ const { lang, alternates } = Astro.props;
 const t = ui[lang];
 ---
 
-<header>
+<header class="site-header">
   <div class="wrap top">
-    <a class="brand" href={homeUrl(lang)}>✦ Hermanos <span>de cuento</span></a>
+    <a class="brand" href={homeUrl(lang)}>
+      <LogoMark />
+      <span>Hermanos <em>de cuento</em></span>
+    </a>
     <nav aria-label={t.navLabel}>
       <a href={`${homeUrl(lang)}#catalogo`}>{t.nav.stories}</a>
       <a href={categoryUrl(lang, 'biblicos')}>{t.nav.biblicos}</a>

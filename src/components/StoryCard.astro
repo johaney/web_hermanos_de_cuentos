@@ -1,4 +1,5 @@
 ---
+import StoryCover from './StoryCover.astro';
 import { ui, storyUrl, ageLabel, type Lang } from '../i18n/ui';
 import type { Story } from '../lib/stories';
 
@@ -15,18 +16,20 @@ const searchText = Object.values(story.versions)
   .flatMap(({ data }) => [data.titulo, data.etiqueta, data.descripcion])
   .join(' ')
   .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[̀-ͯ]/g, '')
   .toLowerCase();
 ---
 
-<div class="card" data-category={v.categoria} data-search={searchText}>
-  <div class="cover" style={`background:${v.color}`} aria-hidden="true">
-    <span class="motif">{v.emoji}</span>
-  </div>
+<article class="card" data-category={v.categoria} data-search={searchText}>
+  <StoryCover story={story} variant="card" />
   <div class="card-body">
-    <div class="meta">{t.categories[v.categoria].toUpperCase()} · {v.minutos} {t.min} · {ageLabel(lang, v.edad)}</div>
-    <h3>{v.titulo}</h3>
-    <p>{v.descripcion}</p>
-    <a class="read" href={storyUrl(lang, v.slug)} aria-label={`${t.readA} ${v.titulo}`}>{t.read}</a>
+    <p class="meta">
+      <span class="tag">{t.categories[v.categoria]}</span>
+      <span>{v.minutos} {t.min.toLowerCase()}</span>
+      <span>{ageLabel(lang, v.edad)}</span>
+    </p>
+    <h3><a href={storyUrl(lang, v.slug)}>{v.titulo}</a></h3>
+    <p class="desc">{v.descripcion}</p>
+    <span class="read" aria-hidden="true">{t.read}</span>
   </div>
-</div>
+</article>

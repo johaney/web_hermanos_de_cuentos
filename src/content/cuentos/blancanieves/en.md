@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Friendship"
 edad: [5, 9]
 minutos: 7
-emoji: "🍎"
 color: "#d4c9ee"
 orden: 9
 descripcion: "Snow White finds friendship and a home in the forest."

@@ -24,7 +24,7 @@ const audioSrc = audio && `${import.meta.env.BASE_URL.replace(/\/$/, '')}${audio
       {formats.map((f, i) => (
         <button
           type="button"
-          class="chip"
+          class="tab"
           role="tab"
           id={`tab-${f.id}`}
           aria-controls={`panel-${f.id}`}

@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Perseverance"
 edad: [4, 8]
 minutos: 6
-emoji: "🐢"
 color: "#b7dce6"
 orden: 6
 descripcion: "A race that shows how much steady steps matter."

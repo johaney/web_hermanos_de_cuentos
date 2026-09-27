@@ -1,12 +1,18 @@
 ---
+import LogoMark from './LogoMark.astro';
 import { ui, type Lang } from '../i18n/ui';
 
 const { lang } = Astro.props as { lang: Lang };
 ---
 
-<footer>
-  <div class="wrap">
-    <strong>✦ Hermanos de cuento</strong>
-    <span>{ui[lang].footer}</span>
+<footer class="site-footer">
+  <svg class="footer-hills" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M0 60V34c120-22 240-30 380-12s250 26 390 6 280-34 420-18 180 20 250 14v36z" fill="currentColor" />
+  </svg>
+  <div class="footer-body">
+    <div class="wrap">
+      <strong class="brand"><LogoMark /><span>Hermanos <em>de cuento</em></span></strong>
+      <span>{ui[lang].footer}</span>
+    </div>
   </div>
 </footer>

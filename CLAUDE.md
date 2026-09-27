@@ -15,14 +15,14 @@ Web de cuentos infantiles bilingüe (español / inglés) pensada para que **madr
 
 ### Catálogo (portada)
 - Cabecera con marca "✦ Hermanos de cuento", navegación (Cuentos, Bíblicos, Valores) y selector de idioma ES/EN.
-- Hero con título, texto, botón "Explorar cuentos ↓" e ilustración principal (dos niños leyendo bajo un árbol).
-- Rejilla de tarjetas: portada de color con emoji, meta (categoría · minutos · edad), título, descripción y enlace "Leer cuento →".
+- Portada: frase manuscrita, título, texto, botón "Explorar cuentos" e ilustración principal (dos niños leyendo bajo un árbol).
+- Rejilla de tarjetas con forma de libro: portada (ilustración del cuento o dibujo provisional por categoría), meta (categoría · minutos · edad), título, descripción y "Leer cuento →". Toda la tarjeta es clicable.
 - Filtros por categoría: Todos, Bíblicos, Valores, Tradicionales.
 - Buscador que filtra por título, etiqueta y descripción (en ambos idiomas).
 - Nota final: "Un rincón para leer con calma".
 
 ### Página de cuento
-- Meta (categoría · minutos de lectura · edad), título, entradilla, ilustración (emoji sobre color), texto por párrafos.
+- Meta (categoría · minutos de lectura · edad), título, entradilla, portada (ilustración o dibujo provisional), texto por párrafos con capitular y "Fin".
 - Recuadro "Para conversar después del cuento" con una pregunta de reflexión.
 - Enlaces para volver al catálogo.
 - **Formatos**: pestañas 📖 Leer · ▶️ Ver · 🎧 Escuchar. Solo aparecen los formatos disponibles para ese cuento (el texto siempre existe; vídeo y audio son opcionales y por idioma).
@@ -56,8 +56,9 @@ Los enlaces antiguos `/#estrella` deben seguir funcionando: la raíz redirige al
 
 - **Astro 7**, salida **estática** (`output: 'static'`), sin servidor Node en producción. Requiere **Node ≥ 22.12** (ver `.nvmrc`).
 - Sin frameworks de UI: componentes `.astro` y scripts pequeños solo donde hay interactividad (filtros/búsqueda, pestañas de formato, redirección de idioma).
-- Imágenes optimizadas con `astro:assets` (AVIF/WebP).
-- Fuentes autoalojadas con Fontsource (Literata y Source Sans 3), sin peticiones a Google Fonts (mejor privacidad/RGPD).
+- Imágenes optimizadas con `astro:assets` (WebP responsive).
+- Fuentes autoalojadas con Fontsource (Alegreya, Alegreya Sans y Caveat), sin peticiones a Google Fonts (mejor privacidad/RGPD).
+- **Diseño "libro ilustrado"**: paleta, tipografía y componentes documentados en [docs/diseno.md](docs/diseno.md). Leerlo antes de tocar estilos.
 
 ### Estructura
 
@@ -67,6 +68,7 @@ src/
   content/cuentos/<clave>/
     es.md                    # versión en español (frontmatter + texto)
     en.md                    # versión en inglés
+    portada.png              # opcional: ilustración del cuento (png/jpg/webp)
   assets/                    # imágenes procesadas por Astro
   components/                # Header, Footer, StoryCard, StoryFormats, …
   layouts/BaseLayout.astro
@@ -95,7 +97,6 @@ categoria: valores                      # biblicos | valores | tradicionales
 etiqueta: Generosidad
 edad: [4, 8]                            # rango de edad
 minutos: 6                              # minutos de lectura
-emoji: 🌟
 color: "#f9d68d"                        # fondo de portada
 orden: 1                                # posición en el catálogo
 descripcion: Una estrella descubre que al ayudar a otras, su brillo no se apaga.
@@ -106,7 +107,9 @@ audio: /audio/estrella-es.mp3           # opcional: archivo en public/audio/
 Párrafos del cuento en Markdown…
 ```
 
-Los campos comunes (categoría, edad, minutos, emoji, color, orden) se repiten en ambos idiomas; si no coinciden, el build falla para evitar incoherencias.
+Los campos comunes (categoría, edad, minutos, color, orden) se repiten en ambos idiomas; si no coinciden, el build falla para evitar incoherencias.
+
+**Portada ilustrada**: basta con dejar `portada.png` (o `.jpg`/`.webp`) en la carpeta del cuento; se detecta sola, se optimiza y sustituye al dibujo provisional de la categoría. Formato recomendado: horizontal 16:10 o más ancho, mínimo 1424 px de ancho, mismo estilo que `src/assets/hermanos-leyendo.png`. `color` se usa como fondo del dibujo provisional.
 
 ### Rutas
 

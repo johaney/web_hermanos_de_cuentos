@@ -5,7 +5,6 @@ categoria: biblicos
 etiqueta: "Esperanza"
 edad: [4, 8]
 minutos: 6
-emoji: "🌈"
 color: "#c6c5ec"
 orden: 5
 descripcion: "Un relato bíblico de cuidado, esperanza y nuevos comienzos."

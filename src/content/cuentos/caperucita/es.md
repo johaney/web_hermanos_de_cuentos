@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Cuidarse"
 edad: [5, 9]
 minutos: 6
-emoji: "🧺"
 color: "#eeb7a4"
 orden: 7
 descripcion: "Una visita a la abuela se convierte en una aventura por el bosque."

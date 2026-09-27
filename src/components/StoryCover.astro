@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import CategoryMotif from './CategoryMotif.astro';
+import type { Story } from '../lib/stories';
+
+interface Props {
+  story: Story;
+  variant: 'card' | 'page';
+}
+
+const { story, variant } = Astro.props;
+const { color, categoria } = story.versions.es.data;
+const sizes = variant === 'card' ? '(max-width: 560px) 100vw, (max-width: 800px) 50vw, 360px' : '(max-width: 760px) 100vw, 712px';
+---
+
+<div class:list={['cover', `cover-${variant}`, { illustrated: story.cover }]} style={`--cover:${color}`}>
+  {
+    story.cover ? (
+      <Image
+        src={story.cover}
+        alt=""
+        widths={variant === 'card' ? [360, 720] : [712, 1424]}
+        sizes={sizes}
+        format="webp"
+        loading={variant === 'page' ? 'eager' : 'lazy'}
+      />
+    ) : (
+      <CategoryMotif category={categoria} />
+    )
+  }
+</div>

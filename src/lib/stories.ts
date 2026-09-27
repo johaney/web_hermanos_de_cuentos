@@ -1,15 +1,26 @@
+import type { ImageMetadata } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { languages, type Lang } from '../i18n/ui';
 
 export type StoryEntry = CollectionEntry<'cuentos'>;
 
-/** Un cuento con su clave (nombre de la carpeta) y sus versiones por idioma. */
+/** Un cuento con su clave (nombre de la carpeta), sus versiones por idioma y su portada opcional. */
 export interface Story {
   key: string;
   versions: Record<Lang, StoryEntry>;
+  cover?: ImageMetadata;
 }
 
-const SHARED_FIELDS = ['categoria', 'edad', 'minutos', 'emoji', 'color', 'orden'] as const;
+const SHARED_FIELDS = ['categoria', 'edad', 'minutos', 'color', 'orden'] as const;
+
+// Portada ilustrada: basta con dejar `portada.(png|jpg|webp)` en la carpeta del cuento.
+const covers = Object.fromEntries(
+  Object.entries(
+    import.meta.glob<{ default: ImageMetadata }>('/src/content/cuentos/*/portada.{png,jpg,jpeg,webp,avif}', {
+      eager: true,
+    }),
+  ).map(([path, mod]) => [path.split('/').at(-2)!, mod.default]),
+);
 
 let cache: Promise<Story[]> | undefined;
 
@@ -37,7 +48,7 @@ async function loadStories(): Promise<Story[]> {
         throw new Error(`El cuento "${key}" tiene distinto "${field}" en es.md y en.md`);
       }
     }
-    stories.push({ key, versions: { es, en } });
+    stories.push({ key, versions: { es, en }, cover: covers[key] });
   }
 
   for (const lang of languages) {

@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Perseverancia"
 edad: [4, 8]
 minutos: 6
-emoji: "🐢"
 color: "#b7dce6"
 orden: 6
 descripcion: "Una carrera que recuerda que avanzar con constancia también cuenta."

@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Trabajo en equipo"
 edad: [4, 8]
 minutos: 6
-emoji: "🐷"
 color: "#f5c7a6"
 orden: 8
 descripcion: "Tres hermanos construyen casas distintas y descubren la fuerza de ayudarse."
