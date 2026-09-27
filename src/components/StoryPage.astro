@@ -1,0 +1,46 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoryFormats from './StoryFormats.astro';
+import { ui, homeUrl, storyUrl, ageLabel, type Lang } from '../i18n/ui';
+import type { Story } from '../lib/stories';
+
+interface Props {
+  story: Story;
+  lang: Lang;
+}
+
+const { story, lang } = Astro.props;
+const t = ui[lang];
+const entry = story.versions[lang];
+const v = entry.data;
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${v.titulo} — Hermanos de cuento`}
+  description={v.descripcion}
+  alternates={{
+    es: storyUrl('es', story.versions.es.data.slug),
+    en: storyUrl('en', story.versions.en.data.slug),
+  }}
+>
+  <article class="story">
+    <div class="story-inner">
+      <a class="back" href={`${homeUrl(lang)}#catalogo`}>{t.back}</a>
+      <div class="story-meta">{t.categories[v.categoria].toUpperCase()} · {v.minutos} {t.minutes} · {ageLabel(lang, v.edad)}</div>
+      <h1>{v.titulo}</h1>
+      <p class="story-lead">{v.descripcion}</p>
+      <div class="story-illustration" style={`background:${v.color}`} aria-hidden="true">{v.emoji}</div>
+      <StoryFormats lang={lang} title={v.titulo} youtube={v.youtube} audio={v.audio}>
+        <div class="story-text"><Content /></div>
+      </StoryFormats>
+      <aside class="reflection">
+        <strong>{t.reflection}</strong>
+        {v.pregunta}
+      </aside>
+      <a class="back" href={`${homeUrl(lang)}#catalogo`}>{t.again}</a>
+    </div>
+  </article>
+</BaseLayout>

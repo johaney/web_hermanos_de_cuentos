@@ -1,35 +1,27 @@
 # Hermanos de cuento
 
-Sitio estático de cuentos infantiles en español e inglés. Incluye once historias, filtros por categoría, búsqueda y selector de idioma. No requiere instalación, compilación ni servidor de aplicaciones.
+Web de cuentos infantiles en español e inglés hecha con [Astro](https://astro.build). Cada cuento tiene su propia página y puede ofrecerse como texto, vídeo de YouTube o audio.
+
+La documentación funcional y técnica está en [CLAUDE.md](CLAUDE.md).
 
 ## Ver en local
 
-Abre `index.html` en un navegador. Para simular un servidor local, desde esta carpeta ejecuta:
+Requiere Node 22.12 o superior (ver `.nvmrc`).
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Después abre `http://localhost:8000`.
+Después abre `http://localhost:4321`.
 
-## Subir a GitHub
+## Añadir un cuento
 
-Crea un repositorio vacío en tu cuenta. En esta carpeta ejecuta:
+1. Crea la carpeta `src/content/cuentos/<clave>/` (por ejemplo `pinocho`).
+2. Añade `es.md` y `en.md` copiando el formato de otro cuento.
+3. Opcional: añade `youtube:` (ID del vídeo) o `audio:` (archivo en `public/audio/`).
+4. `npm run build` comprueba que todo esté correcto.
 
-```bash
-git init
-git add .
-git commit -m "Publicar Hermanos de cuento"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-git push -u origin main
-```
+## Publicar
 
-Sustituye `TU_USUARIO` y `TU_REPOSITORIO`. Si quieres alojarlo en GitHub Pages, entra en **Settings → Pages**, selecciona **Deploy from a branch**, rama **main** y carpeta **/(root)**.
-
-## Archivos
-
-- `index.html`: estructura, estilos, comportamiento y textos de los cuentos.
-- `hermanos-leyendo.png`: ilustración principal.
-
-El sitio guarda la preferencia de idioma únicamente en el navegador de cada visitante. La fuente se carga desde Google Fonts; si falla, usa fuentes instaladas en el dispositivo.
+Al fusionar en `main`, GitHub Actions compila el sitio y lo sube a IONOS (ver `.github/workflows/deploy.yml`).

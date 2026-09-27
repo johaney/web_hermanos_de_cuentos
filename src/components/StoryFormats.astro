@@ -1,0 +1,106 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  youtube?: string;
+  audio?: string;
+}
+
+const { lang, title, youtube, audio } = Astro.props;
+const t = ui[lang];
+const formats = [
+  { id: 'leer', label: t.formatRead },
+  youtube && { id: 'ver', label: t.formatWatch },
+  audio && { id: 'escuchar', label: t.formatListen },
+].filter(Boolean) as { id: string; label: string }[];
+const audioSrc = audio && `${import.meta.env.BASE_URL.replace(/\/$/, '')}${audio}`;
+---
+
+{
+  formats.length > 1 && (
+    <div class="formats" role="tablist" aria-label={t.formatsLabel}>
+      {formats.map((f, i) => (
+        <button
+          type="button"
+          class="chip"
+          role="tab"
+          id={`tab-${f.id}`}
+          aria-controls={`panel-${f.id}`}
+          aria-selected={i === 0}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+<div class="format-panel" id="panel-leer" role={formats.length > 1 ? 'tabpanel' : undefined} aria-labelledby={formats.length > 1 ? 'tab-leer' : undefined}>
+  <slot />
+</div>
+
+{
+  youtube && (
+    <div class="format-panel" id="panel-ver" role="tabpanel" aria-labelledby="tab-ver" hidden>
+      <div class="video" data-youtube={youtube}>
+        <button type="button" aria-label={`${t.playVideo}: ${title}`}>
+          <img src={`https://i.ytimg.com/vi/${youtube}/hqdefault.jpg`} alt="" loading="lazy" />
+          <span class="play" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+{
+  audioSrc && (
+    <div class="format-panel" id="panel-escuchar" role="tabpanel" aria-labelledby="tab-escuchar" hidden>
+      <audio class="audio" controls preload="none" src={audioSrc} />
+    </div>
+  )
+}
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.formats [role="tab"]')];
+
+  function select(tab: HTMLButtonElement) {
+    for (const other of tabs) {
+      const active = other === tab;
+      other.setAttribute('aria-selected', String(active));
+      other.tabIndex = active ? 0 : -1;
+      document.getElementById(other.getAttribute('aria-controls')!)!.hidden = !active;
+    }
+    // Al salir de una pestaña se detiene lo que se esté reproduciendo.
+    document.querySelectorAll<HTMLAudioElement>('.format-panel[hidden] audio').forEach((a) => a.pause());
+    document.querySelectorAll('.format-panel[hidden] iframe').forEach((f) => f.remove());
+    document.querySelectorAll<HTMLElement>('.format-panel[hidden] .video button').forEach((b) => (b.hidden = false));
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      select(next);
+    });
+  });
+
+  // Fachada de YouTube: el reproductor solo se carga al pulsar.
+  document.querySelectorAll<HTMLElement>('.video[data-youtube]').forEach((video) => {
+    const button = video.querySelector('button')!;
+    button.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${video.dataset.youtube}?autoplay=1&rel=0`;
+      iframe.title = button.getAttribute('aria-label') ?? '';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      button.hidden = true;
+      video.append(iframe);
+    });
+  });
+</script>

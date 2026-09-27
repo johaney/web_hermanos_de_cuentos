@@ -19,16 +19,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Comprobar archivos del sitio
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Compilar el sitio
+        # Valida tipos y contenido de los cuentos, y genera dist/.
+        run: npm run build
+      - name: Comprobar el resultado
         run: |
-          test -s index.html
-          test -s hermanos-leyendo.png
-          python3 - <<'PY'
-          from pathlib import Path
-          html = Path('index.html').read_text(encoding='utf-8')
-          assert '<html' in html.lower()
-          assert 'hermanos-leyendo.png' in html
-          PY
+          test -s dist/index.html
+          test -s dist/404.html
+          test -s dist/.htaccess
+          test -s dist/es/index.html
+          test -s dist/en/index.html
+          test "$(find dist/es/cuentos -name index.html | wc -l)" -eq "$(find src/content/cuentos -name es.md | wc -l)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sitio
+          path: dist/
+          include-hidden-files: true
+          retention-days: 7
 
   publicar:
     if: github.event_name != 'pull_request' && vars.DEPLOY_ENABLED == 'true'
@@ -36,7 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: sitio
+          path: dist/
       - name: Configurar clave SSH
         env:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
@@ -50,8 +66,9 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
       - name: Publicar en IONOS por SSH
+        # La barra final de dist/ sube su contenido (no la carpeta) al destino.
         run: |
           rsync -av --no-perms --no-owner --no-group \
             -e 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -p 22' \
-            index.html hermanos-leyendo.png \
+            dist/ \
             su502099@access-5019596432.webspace-host.com:/home/www/public/cuentos/
