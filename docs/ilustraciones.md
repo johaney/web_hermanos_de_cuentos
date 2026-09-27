@@ -2,11 +2,20 @@
 
 Prompts para generar la portada de cada cuento con el mismo estilo que la ilustración principal (`src/assets/hermanos-leyendo.png`). Los prompts están en inglés porque los generadores de imágenes responden mejor así; cada uno lleva un resumen en español.
 
+## Estado
+
+| Cuento | Portada |
+|---|---|
+| noe, liebre, caperucita, cerditos, blancanieves, patito, ricitos | ✅ `portada.jpg` (4:3, 1448 × 1086) |
+| estrella, samaritano, semilla, leon | ⏳ pendiente (muestran el dibujo provisional) |
+
+Las portadas se guardan en JPG de calidad alta (~600 KB) para no engordar el repositorio; la web genera después las versiones optimizadas. El formato 4:3 funciona bien: la tarjeta la recorta a 16:10 y la página del cuento la muestra entera.
+
 ## Cómo usarlos
 
 1. Abre el generador (ChatGPT, Gemini, Midjourney…) y **adjunta `hermanos-leyendo.png` como referencia de estilo**. Es lo que más ayuda a que todas las imágenes parezcan del mismo libro.
 2. Pega el **bloque de estilo** y, justo debajo, la **escena** del cuento.
-3. Formato **horizontal 3:2**, idealmente 1536 × 1024 px o más.
+3. Formato **horizontal 4:3 o 3:2**, de al menos 1400 px de ancho.
 4. Genera varias versiones y elige la que mejor encaje. Si algo sale mal, pide cambios concretos ("más oscuro", "el ratón más pequeño", "quita el texto").
 5. Guárdala como `portada.jpg` (o `.png`/`.webp`) en la carpeta del cuento: `src/content/cuentos/<clave>/portada.jpg`. La web la detecta sola.
 

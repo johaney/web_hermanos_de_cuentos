@@ -96,6 +96,9 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
 .cover-card { aspect-ratio: 16 / 10; border-radius: 1px 8px 0 0; border-bottom: 1.5px solid var(--line); }
 .cover-page { aspect-ratio: 16 / 9; border-radius: 160px 160px 6px 6px; margin: 34px 0 40px; border: 1.5px solid var(--line); }
 .cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* En la página, la ilustración se ve completa en su proporción original y con un arco más suave. */
+.cover-page.illustrated { aspect-ratio: auto; border-radius: 56px 56px 6px 6px; }
+.cover-page.illustrated img { height: auto; }
 .cover .motif { position: absolute; inset: 12% 14% 4%; width: 72%; height: 84%; }
 .card:nth-child(3n+2) .motif { transform: rotate(2deg); }
 .card:nth-child(3n) .motif { transform: rotate(-2deg) scaleX(-1); }
@@ -202,6 +205,7 @@ h1, h2, h3, .story-lead { text-wrap: balance; }
   .story-text { font-size: 19px; }
   .story-lead { font-size: 20px; }
   .cover-page { border-radius: 90px 90px 6px 6px; }
+  .cover-page.illustrated { border-radius: 32px 32px 6px 6px; }
   .reflection { padding: 26px 22px 22px; }
   .reflection li { font-size: 18px; grid-template-columns: 32px 1fr; }
   .narration-ui { gap: 12px; padding: 12px 14px; }
