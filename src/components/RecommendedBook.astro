@@ -1,0 +1,32 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+import { bookUrl } from '../config';
+import type { StoryEntry } from '../lib/stories';
+
+interface Props {
+  lang: Lang;
+  book: NonNullable<StoryEntry['data']['libro']>;
+  color: string;
+}
+
+const { lang, book, color } = Astro.props;
+const t = ui[lang];
+---
+
+<aside class="book-rec" aria-labelledby="book-rec-title">
+  <div class="book-rec-cover" style={`--cover:${color}`} aria-hidden="true">
+    <span>{book.titulo}</span>
+  </div>
+  <div class="book-rec-body">
+    <p class="hand" id="book-rec-title">{t.bookTitle}</p>
+    <h2>{book.titulo}</h2>
+    <p class="book-rec-author">{t.bookBy} {book.autor}</p>
+    {book.nota && <p class="book-rec-note">{book.nota}</p>}
+    <a class="button" href={bookUrl(lang, book)} target="_blank" rel="sponsored nofollow noopener">
+      {t.bookCta}
+      <span class="sr-only">{t.newTab}</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8 4H4.5v11.5H16V12M11 4h5v5M16 4l-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </a>
+    <p class="book-rec-disclosure">{t.affiliateDisclosure}</p>
+  </div>
+</aside>

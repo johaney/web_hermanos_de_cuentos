@@ -25,6 +25,17 @@ const cuentos = defineCollection({
     // Comprensión lectora: 1) recordar qué pasó, 2) pensar por qué, 3) conectar con el niño.
     preguntas: z.array(z.string()).min(1).max(3),
     youtube: z.string().regex(/^[\w-]{11}$/, 'ID de vídeo de YouTube (11 caracteres)').optional(),
+    // Libro recomendado (afiliados): `asin` de Amazon o, para otra tienda, `url` completa.
+    libro: z
+      .object({
+        titulo: z.string(),
+        autor: z.string(),
+        asin: z.string().regex(/^[A-Z0-9]{10}$/, 'ASIN de Amazon (10 caracteres)').optional(),
+        url: z.url().optional(),
+        nota: z.string().optional(),
+      })
+      .refine((libro) => libro.asin || libro.url, 'El libro necesita "asin" o "url"')
+      .optional(),
   }),
 });
 

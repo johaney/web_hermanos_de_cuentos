@@ -27,6 +27,7 @@ Estructura completa y cómo añadir contenido: **[docs/plantilla-cuento.md](docs
 - **Narración** (opcional, por idioma): reproductor propio encima del texto (play/pausa, progreso, velocidad 1×/0,75×/1,25×) para leer mientras se escucha.
 - **Vídeo** (opcional, por idioma): si existe, aparecen las pestañas Leer / Ver el vídeo.
 - **Para conversar después del cuento**: hasta 3 preguntas de comprensión lectora (recordar, pensar, conectar).
+- **Libro recomendado** (opcional, por idioma): enlace de afiliado de Amazon con aviso legal (`RecommendedBook.astro`, ID de afiliado en `src/config.ts`).
 - Enlaces para volver al catálogo.
 
 ### Idiomas
@@ -132,6 +133,11 @@ La URL pública (`site`, necesaria para sitemap, canónicas y hreflang) es `http
 - **Narración**: `narracion-<idioma>.mp3` en la carpeta del cuento, detectada con `import.meta.glob` en `src/lib/stories.ts` y servida con hash desde `_astro/`. `NarrationPlayer.astro` mejora un `<audio controls>` nativo (funciona sin JavaScript).
 
 ## Monetización (fase 3, pendiente)
+
+Estrategia acordada: primero contenido y SEO (objetivo 30–50 cuentos), luego afiliados, YouTube/pódcast con las narraciones e imprimibles; AdSense al final, cuando haya contenido y tráfico. Expectativa realista: ingresos casi nulos los primeros 6–12 meses.
+
+- **Afiliados de Amazon** (listo): bloque "libro recomendado" por cuento, enlaces `rel="sponsored nofollow"`, aviso obligatorio junto al enlace. Falta darse de alta y rellenar `tag` en `src/config.ts`.
+- **Ilustraciones**: prompts por cuento en [docs/ilustraciones.md](docs/ilustraciones.md).
 
 - Google AdSense con espacios fijos (`AdSlot`): tras unos párrafos del cuento y al final, nunca junto a botones o enlaces que usan los niños.
 - Público declarado: **familias (adultos que leen con niños)**. Aun así el contenido es infantil: revisar la política de Google sobre contenido dirigido a menores (COPPA) y, si aplica, servir solo anuncios no personalizados.
