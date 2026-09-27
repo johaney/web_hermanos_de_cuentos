@@ -8,7 +8,10 @@ minutos: 6
 color: "#f7be94"
 orden: 4
 descripcion: "A classic fable about helping, whatever your size."
-pregunta: "Can you remember a time when someone small did something big?"
+preguntas:
+  - "How did the mouse free the lion from the net?"
+  - "Why did the lion laugh when the mouse said he might help him one day?"
+  - "Can you remember a time when someone small did something big?"
 ---
 A lion was sleeping under a tree when a little mouse ran across his mane. The lion woke and caught him under his paw.
 

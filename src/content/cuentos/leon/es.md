@@ -8,7 +8,10 @@ minutos: 6
 color: "#f7be94"
 orden: 4
 descripcion: "Una fábula clásica sobre el valor de ayudar, sin importar el tamaño."
-pregunta: "¿Recuerdas alguna vez en que alguien pequeño hizo algo grande?"
+preguntas:
+  - "¿Cómo consiguió el ratón liberar al león de la red?"
+  - "¿Por qué se rio el león cuando el ratón le dijo que algún día podría ayudarle?"
+  - "¿Recuerdas alguna vez en que alguien pequeño hizo algo grande?"
 ---
 Un león dormía bajo un árbol cuando un ratoncito pasó corriendo sobre su melena. El león despertó y lo atrapó con una pata.
 

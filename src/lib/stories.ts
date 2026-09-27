@@ -9,6 +9,8 @@ export interface Story {
   key: string;
   versions: Record<Lang, StoryEntry>;
   cover?: ImageMetadata;
+  /** URL de la narración por idioma (`narracion-es.mp3`, `narracion-en.mp3`). */
+  narration: Partial<Record<Lang, string>>;
 }
 
 const SHARED_FIELDS = ['categoria', 'edad', 'minutos', 'color', 'orden'] as const;
@@ -21,6 +23,22 @@ const covers = Object.fromEntries(
     }),
   ).map(([path, mod]) => [path.split('/').at(-2)!, mod.default]),
 );
+
+// Narración: `narracion-<idioma>.(mp3|m4a)` en la carpeta del cuento.
+const narrations = import.meta.glob<string>('/src/content/cuentos/*/narracion-{es,en}.{mp3,m4a}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
+function narrationFor(key: string): Partial<Record<Lang, string>> {
+  const result: Partial<Record<Lang, string>> = {};
+  for (const [path, url] of Object.entries(narrations)) {
+    const [, folder, file] = path.match(/\/([^/]+)\/narracion-(es|en)\.\w+$/) ?? [];
+    if (folder === key) result[file as Lang] = url;
+  }
+  return result;
+}
 
 let cache: Promise<Story[]> | undefined;
 
@@ -48,7 +66,7 @@ async function loadStories(): Promise<Story[]> {
         throw new Error(`El cuento "${key}" tiene distinto "${field}" en es.md y en.md`);
       }
     }
-    stories.push({ key, versions: { es, en }, cover: covers[key] });
+    stories.push({ key, versions: { es, en }, cover: covers[key], narration: narrationFor(key) });
   }
 
   for (const lang of languages) {

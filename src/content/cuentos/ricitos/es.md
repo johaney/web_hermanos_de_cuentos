@@ -8,7 +8,10 @@ minutos: 6
 color: "#e8c98e"
 orden: 11
 descripcion: "Una niña curiosa aprende a respetar la casa y las cosas de los demás."
-pregunta: "¿Por qué es importante pedir permiso antes de usar algo ajeno?"
+preguntas:
+  - "¿Qué cosas de la casa de los osos usó Ricitos de Oro?"
+  - "¿Qué hizo Ricitos para arreglar lo que había pasado?"
+  - "¿Por qué es importante pedir permiso antes de usar algo ajeno?"
 ---
 Una mañana, tres osos prepararon gachas para desayunar. Como estaban demasiado calientes, salieron a dar un paseo por el bosque. Poco después, Ricitos de Oro llegó hasta su casita y llamó a la puerta. Nadie respondió.
 

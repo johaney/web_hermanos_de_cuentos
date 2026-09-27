@@ -8,7 +8,10 @@ minutos: 6
 color: "#f5c7a6"
 orden: 8
 descripcion: "Three siblings build different houses and discover the power of helping one another."
-pregunta: "What would you like to make with your siblings or friends?"
+preguntas:
+  - "What did each little pig use to build his house?"
+  - "Why did the brick house stay standing when the wolf blew?"
+  - "What would you like to make with your siblings or friends?"
 ---
 Three little pigs decided to build homes at the edge of a forest. The first wanted to play and quickly made a house of straw. The second used wood and finished that afternoon. The third chose bricks, laid a strong foundation, and worked for several days.
 

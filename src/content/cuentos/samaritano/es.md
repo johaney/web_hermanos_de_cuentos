@@ -8,7 +8,10 @@ minutos: 6
 color: "#b9d8c7"
 orden: 2
 descripcion: "Una adaptación infantil de la parábola del buen samaritano."
-pregunta: "¿Cómo puedes ayudar a alguien que lo necesita?"
+preguntas:
+  - "¿Qué hizo el samaritano para ayudar al viajero?"
+  - "¿Por qué crees que algunas personas pasaron de largo sin ayudar?"
+  - "¿Cómo puedes ayudar a alguien que lo necesita?"
 ---
 Jesús contó una vez la historia de un viajero que iba por un camino largo. En el trayecto se lastimó y quedó sentado a un lado, esperando ayuda.
 

@@ -22,9 +22,9 @@ const cuentos = defineCollection({
     color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
     orden: z.number().int(),
     descripcion: z.string(),
-    pregunta: z.string(),
+    // Comprensión lectora: 1) recordar qué pasó, 2) pensar por qué, 3) conectar con el niño.
+    preguntas: z.array(z.string()).min(1).max(3),
     youtube: z.string().regex(/^[\w-]{11}$/, 'ID de vídeo de YouTube (11 caracteres)').optional(),
-    audio: z.string().startsWith('/audio/').optional(),
   }),
 });
 

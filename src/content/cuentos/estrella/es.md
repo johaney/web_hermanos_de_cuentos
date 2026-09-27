@@ -8,7 +8,10 @@ minutos: 6
 color: "#f9d68d"
 orden: 1
 descripcion: "Una estrella descubre que al ayudar a otras, su brillo no se apaga."
-pregunta: "¿Qué cosa pequeña podrías compartir hoy con alguien?"
+preguntas:
+  - "¿Qué le pidió el pajarito a Lía cuando la nube oscura tapó su camino?"
+  - "¿Por qué crees que la luz de Lía no se apagó al compartirla?"
+  - "¿Qué cosa pequeña podrías compartir hoy con alguien?"
 ---
 En lo alto del cielo vivía Lía, una estrella pequeña que guardaba su luz con mucho cuidado. Cada noche brillaba solo un poquito, por miedo a quedarse sin resplandor.
 

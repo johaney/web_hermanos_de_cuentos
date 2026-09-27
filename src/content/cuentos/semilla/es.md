@@ -8,7 +8,10 @@ minutos: 5
 color: "#a9d9c4"
 orden: 3
 descripcion: "Mara aprende que algunas cosas bonitas necesitan tiempo."
-pregunta: "¿Qué te gusta cuidar aunque tarde en crecer?"
+preguntas:
+  - "¿Qué le explicó su abuelo a Mara sobre las semillas?"
+  - "¿Por qué crees que el abuelo le propuso dibujar la maceta cada tarde?"
+  - "¿Qué te gusta cuidar aunque tarde en crecer?"
 ---
 Mara plantó una semilla en una maceta azul y la regó con cuidado. A la mañana siguiente corrió a verla. La tierra seguía igual.
 

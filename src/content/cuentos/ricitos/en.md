@@ -8,7 +8,10 @@ minutos: 6
 color: "#e8c98e"
 orden: 11
 descripcion: "A curious girl learns to respect other people’s home and belongings."
-pregunta: "Why is it important to ask before using someone else’s things?"
+preguntas:
+  - "What things in the bears’ house did Goldilocks use?"
+  - "What did Goldilocks do to make things right?"
+  - "Why is it important to ask before using someone else’s things?"
 ---
 One morning, three bears made porridge for breakfast. It was too hot, so they went for a walk in the woods. Soon Goldilocks came upon their cottage and knocked. Nobody answered.
 

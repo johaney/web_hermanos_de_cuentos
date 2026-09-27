@@ -8,7 +8,10 @@ minutos: 6
 color: "#b7dce6"
 orden: 6
 descripcion: "Una carrera que recuerda que avanzar con constancia también cuenta."
-pregunta: "¿Qué estás aprendiendo paso a paso?"
+preguntas:
+  - "¿Qué hizo la liebre cuando iba muy por delante en la carrera?"
+  - "¿Por qué crees que ganó la tortuga, aunque era más lenta?"
+  - "¿Qué estás aprendiendo paso a paso?"
 ---
 La liebre corría tan rápido que se burlaba de la tortuga. Un día la tortuga le propuso una carrera. Los animales del bosque se reunieron para verlas partir.
 

@@ -8,7 +8,10 @@ minutos: 7
 color: "#d4c9ee"
 orden: 9
 descripcion: "Snow White finds friendship and a home in the forest."
-pregunta: "What makes you feel welcome somewhere?"
+preguntas:
+  - "Who lived in the cottage with seven chairs?"
+  - "Why do you think Snow White chose to live near her friends?"
+  - "What makes you feel welcome somewhere?"
 ---
 Snow White lived in a castle with a queen who wanted everyone to admire her. One day, the queen grew angry when she thought the young girl was more loved than she was. Snow White went into the forest to find somewhere peaceful and safe.
 

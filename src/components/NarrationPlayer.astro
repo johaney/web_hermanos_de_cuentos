@@ -1,0 +1,74 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  src: string;
+}
+
+const { lang, src } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="narration" aria-label={t.listenTitle} data-play-label={t.play} data-pause-label={t.pause}>
+  <!-- Sin JavaScript se ve el reproductor nativo; con JavaScript se sustituye por el propio. -->
+  <audio src={src} preload="metadata" controls></audio>
+  <div class="narration-ui" hidden>
+    <button type="button" class="narration-play" aria-label={t.play}>
+      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" /></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" /></svg>
+    </button>
+    <div class="narration-main">
+      <p class="hand">{t.listenTitle}</p>
+      <input class="narration-progress" type="range" min="0" max="100" step="0.1" value="0" aria-label={t.progress} />
+      <p class="narration-times"><span data-current>0:00</span><span data-duration>–:––</span></p>
+    </div>
+    <button type="button" class="narration-speed" aria-label={t.speed}>1×</button>
+  </div>
+</section>
+
+<script>
+  const SPEEDS = [1, 0.75, 1.25];
+  const format = (s: number) =>
+    Number.isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '–:––';
+
+  document.querySelectorAll<HTMLElement>('.narration').forEach((player) => {
+    const audio = player.querySelector('audio')!;
+    const ui = player.querySelector<HTMLElement>('.narration-ui')!;
+    const play = player.querySelector<HTMLButtonElement>('.narration-play')!;
+    const progress = player.querySelector<HTMLInputElement>('.narration-progress')!;
+    const speed = player.querySelector<HTMLButtonElement>('.narration-speed')!;
+    const current = player.querySelector<HTMLElement>('[data-current]')!;
+    const duration = player.querySelector<HTMLElement>('[data-duration]')!;
+
+    audio.controls = false;
+    ui.hidden = false;
+
+    const update = () => {
+      const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      progress.value = String(pct);
+      progress.style.setProperty('--p', `${pct}%`);
+      current.textContent = format(audio.currentTime);
+    };
+    const setPlaying = (playing: boolean) => {
+      play.setAttribute('aria-label', (playing ? player.dataset.pauseLabel : player.dataset.playLabel)!);
+      player.classList.toggle('playing', playing);
+    };
+
+    play.addEventListener('click', () => (audio.paused ? audio.play() : audio.pause()));
+    progress.addEventListener('input', () => {
+      if (audio.duration) audio.currentTime = (Number(progress.value) / 100) * audio.duration;
+    });
+    speed.addEventListener('click', () => {
+      const next = SPEEDS[(SPEEDS.indexOf(audio.playbackRate) + 1) % SPEEDS.length];
+      audio.playbackRate = next;
+      speed.textContent = `${String(next).replace('.', ',')}×`;
+    });
+    audio.addEventListener('loadedmetadata', () => (duration.textContent = format(audio.duration)));
+    audio.addEventListener('timeupdate', update);
+    audio.addEventListener('play', () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.addEventListener('ended', () => setPlaying(false));
+    if (audio.readyState >= 1) duration.textContent = format(audio.duration);
+  });
+</script>
