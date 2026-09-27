@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Amistad"
 edad: [4, 8]
 minutos: 6
-emoji: "🦁"
 color: "#f7be94"
 orden: 4
 descripcion: "Una fábula clásica sobre el valor de ayudar, sin importar el tamaño."

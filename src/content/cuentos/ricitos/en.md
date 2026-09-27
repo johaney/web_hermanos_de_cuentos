@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Respect"
 edad: [4, 8]
 minutos: 6
-emoji: "🐻"
 color: "#e8c98e"
 orden: 11
 descripcion: "A curious girl learns to respect other people’s home and belongings."

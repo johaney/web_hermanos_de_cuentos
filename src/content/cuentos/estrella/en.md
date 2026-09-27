@@ -5,7 +5,6 @@ categoria: valores
 etiqueta: "Generosity"
 edad: [4, 8]
 minutos: 6
-emoji: "🌟"
 color: "#f9d68d"
 orden: 1
 descripcion: "A star discovers that helping others does not dim her glow."

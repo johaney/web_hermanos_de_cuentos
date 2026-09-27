@@ -2,6 +2,8 @@
 import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StoryFormats from './StoryFormats.astro';
+import StoryCover from './StoryCover.astro';
+import Ornament from './Ornament.astro';
 import { ui, homeUrl, storyUrl, ageLabel, type Lang } from '../i18n/ui';
 import type { Story } from '../lib/stories';
 
@@ -29,16 +31,24 @@ const { Content } = await render(entry);
   <article class="story">
     <div class="story-inner">
       <a class="back" href={`${homeUrl(lang)}#catalogo`}>{t.back}</a>
-      <div class="story-meta">{t.categories[v.categoria].toUpperCase()} · {v.minutos} {t.minutes} · {ageLabel(lang, v.edad)}</div>
-      <h1>{v.titulo}</h1>
-      <p class="story-lead">{v.descripcion}</p>
-      <div class="story-illustration" style={`background:${v.color}`} aria-hidden="true">{v.emoji}</div>
+      <header class="story-head">
+        <p class="meta">
+          <span class="tag">{t.categories[v.categoria]}</span>
+          <span>{v.minutos} {t.min.toLowerCase()}</span>
+          <span>{ageLabel(lang, v.edad)}</span>
+        </p>
+        <h1>{v.titulo}</h1>
+        <p class="story-lead">{v.descripcion}</p>
+        <Ornament />
+      </header>
+      <StoryCover story={story} variant="page" />
       <StoryFormats lang={lang} title={v.titulo} youtube={v.youtube} audio={v.audio}>
         <div class="story-text"><Content /></div>
+        <p class="the-end">{t.theEnd}</p>
       </StoryFormats>
       <aside class="reflection">
-        <strong>{t.reflection}</strong>
-        {v.pregunta}
+        <strong class="hand">{t.reflection}</strong>
+        <p>{v.pregunta}</p>
       </aside>
       <a class="back" href={`${homeUrl(lang)}#catalogo`}>{t.again}</a>
     </div>

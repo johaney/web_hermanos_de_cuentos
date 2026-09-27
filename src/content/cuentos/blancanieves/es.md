@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Amistad"
 edad: [5, 9]
 minutos: 7
-emoji: "🍎"
 color: "#d4c9ee"
 orden: 9
 descripcion: "Blancanieves encuentra amistad y un hogar en el bosque."

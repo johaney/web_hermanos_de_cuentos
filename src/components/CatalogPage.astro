@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StoryCard from './StoryCard.astro';
+import Ornament from './Ornament.astro';
 import heroImage from '../assets/hermanos-leyendo.png';
 import { ui, homeUrl, type Lang, type Category } from '../i18n/ui';
 import { getStories } from '../lib/stories';
@@ -25,23 +26,26 @@ const filters = Object.keys(t.categories) as Category[];
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow">{t.eyebrow}</div>
-        <h1>{t.heroTitle}</h1>
-        <p>{t.heroBody}</p>
-        <a class="hint" href="#catalogo">{t.explore}</a>
+        <p class="hand">{t.eyebrow}</p>
+        <h1>{t.heroTitle} <em>{t.heroTitleEm}</em></h1>
+        <p class="hero-body">{t.heroBody}</p>
+        <a class="button" href="#catalogo">
+          {t.explore}
+          <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 3v13M4 10.5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
       </div>
-      <div class="hero-art">
+      <figure class="hero-art">
         <Image
           src={heroImage}
           alt={t.heroAlt}
           widths={[640, 960, 1280, 1536]}
-          sizes="(max-width: 1160px) 100vw, 1112px"
+          sizes="(max-width: 800px) 100vw, 640px"
           format="webp"
           quality={78}
           loading="eager"
           fetchpriority="high"
         />
-      </div>
+      </figure>
     </div>
   </section>
 
@@ -51,12 +55,15 @@ const filters = Object.keys(t.categories) as Category[];
         <h2>{t.catalogTitle}</h2>
         <p>{t.catalogBody}</p>
       </div>
-      <input class="search" id="search" type="search" placeholder={t.search} aria-label={t.search} />
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M15.5 15.5l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        <input id="search" type="search" placeholder={t.search} aria-label={t.search} />
+      </label>
     </div>
     <div class="filters" role="group" aria-label={t.filtersLabel}>
       {
         filters.map((c) => (
-          <button type="button" class="chip" data-filter={c} aria-pressed={c === 'todos'}>
+          <button type="button" class="tab" data-filter={c} aria-pressed={c === 'todos'}>
             {t.categories[c]}
           </button>
         ))
@@ -66,13 +73,12 @@ const filters = Object.keys(t.categories) as Category[];
       {stories.map((story) => <StoryCard story={story} lang={lang} />)}
     </div>
     <p class="empty" id="empty" hidden>{t.empty}</p>
-    <div class="note">
-      <div>
-        <h3>{t.noteTitle}</h3>
-        <p>{t.noteBody}</p>
-      </div>
-      <small>{t.noteSmall}</small>
-    </div>
+    <aside class="note">
+      <Ornament />
+      <h3>{t.noteTitle}</h3>
+      <p>{t.noteBody}</p>
+      <p class="hand">{t.noteSmall}</p>
+    </aside>
   </section>
 </BaseLayout>
 

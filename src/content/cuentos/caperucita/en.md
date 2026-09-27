@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Staying safe"
 edad: [5, 9]
 minutos: 6
-emoji: "🧺"
 color: "#eeb7a4"
 orden: 7
 descripcion: "A visit to Grandma becomes an adventure through the woods."

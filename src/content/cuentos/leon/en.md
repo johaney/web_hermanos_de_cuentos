@@ -5,7 +5,6 @@ categoria: tradicionales
 etiqueta: "Friendship"
 edad: [4, 8]
 minutos: 6
-emoji: "🦁"
 color: "#f7be94"
 orden: 4
 descripcion: "A classic fable about helping, whatever your size."

@@ -5,7 +5,6 @@ categoria: biblicos
 etiqueta: "Ayudar a otros"
 edad: [5, 9]
 minutos: 6
-emoji: "🫏"
 color: "#b9d8c7"
 orden: 2
 descripcion: "Una adaptación infantil de la parábola del buen samaritano."

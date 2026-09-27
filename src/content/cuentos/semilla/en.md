@@ -5,7 +5,6 @@ categoria: valores
 etiqueta: "Patience"
 edad: [3, 7]
 minutos: 5
-emoji: "🌱"
 color: "#a9d9c4"
 orden: 3
 descripcion: "Mara learns that beautiful things sometimes take time."

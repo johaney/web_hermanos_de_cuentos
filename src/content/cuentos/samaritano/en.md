@@ -5,7 +5,6 @@ categoria: biblicos
 etiqueta: "Helping others"
 edad: [5, 9]
 minutos: 6
-emoji: "🫏"
 color: "#b9d8c7"
 orden: 2
 descripcion: "A child-friendly retelling of the parable of the Good Samaritan."
