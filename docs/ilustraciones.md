@@ -6,8 +6,9 @@ Prompts para generar la portada de cada cuento con el mismo estilo que la ilustr
 
 | Cuento | Portada |
 |---|---|
-| noe, liebre, caperucita, cerditos, blancanieves, patito, ricitos | ✅ `portada.jpg` (4:3, 1448 × 1086) |
-| estrella, samaritano, semilla, leon | ⏳ pendiente (muestran el dibujo provisional) |
+| Los 11 cuentos | ✅ `portada.jpg` (4:3, 1448 × 1086) |
+
+Para cuentos nuevos, usar como referencia de estilo una de estas portadas (por ejemplo `caperucita/portada.jpg`) en lugar de `hermanos-leyendo.png`: las portadas siguen un estilo propio de acuarela cálida y luz dorada.
 
 Las portadas se guardan en JPG de calidad alta (~600 KB) para no engordar el repositorio; la web genera después las versiones optimizadas. El formato 4:3 funciona bien: la tarjeta la recorta a 16:10 y la página del cuento la muestra entera.
 
