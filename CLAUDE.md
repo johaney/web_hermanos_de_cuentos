@@ -175,7 +175,7 @@ npm run preview    # servir dist/ en local
 - [x] Fase 0 — Análisis y este documento.
 - [x] Fase 1 — Migración a Astro con el mismo diseño, una página por cuento, ES/EN, imagen optimizada y redirección de enlaces antiguos.
 - [x] Rediseño "libro ilustrado" ([docs/diseno.md](docs/diseno.md)).
-- [ ] Fase 2 — Formatos: narración, vídeo y 3 preguntas de comprensión. *Plantilla lista ([docs/plantilla-cuento.md](docs/plantilla-cuento.md)); faltan portadas, narraciones y vídeos reales.*
+- [ ] Fase 2 — Formatos: narración, vídeo y 3 preguntas de comprensión. *Plantilla lista ([docs/plantilla-cuento.md](docs/plantilla-cuento.md)); los 30 cuentos tienen portada; faltan narraciones y vídeos reales.*
 - [ ] Fase 3 — Monetización: AdSense, consentimiento, páginas legales, `ads.txt`, sitemap.
 - [ ] Fase 4 — Actualizar el workflow de GitHub Actions y la configuración de IONOS. *Workflow listo; pendiente la primera publicación.*
 
