@@ -6,8 +6,7 @@ Prompts para generar la portada de cada cuento con el mismo estilo que la ilustr
 
 | Cuento | Portada |
 |---|---|
-| Los 11 primeros (1–11) | ✅ `portada.jpg` (4:3, 1448 × 1086) |
-| Los 19 nuevos (12–30) | ⏳ pendiente (se muestra el dibujo provisional de la categoría) |
+| Los 30 cuentos | ✅ `portada.jpg` (4:3, 1448 × 1086) |
 
 Para cuentos nuevos, usar como referencia de estilo una de estas portadas (por ejemplo `caperucita/portada.jpg`) en lugar de `hermanos-leyendo.png`: las portadas siguen un estilo propio de acuarela cálida y luz dorada.
 
