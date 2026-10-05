@@ -12,6 +12,7 @@ preguntas:
   - "¿Cómo consiguió el ratón liberar al león de la red?"
   - "¿Por qué se rio el león cuando el ratón le dijo que algún día podría ayudarle?"
   - "¿Recuerdas alguna vez en que alguien pequeño hizo algo grande?"
+youtube: t6oLKxPnPPM
 ---
 Un león dormía bajo un árbol cuando un ratoncito pasó corriendo sobre su melena. El león despertó y lo atrapó con una pata.
 
