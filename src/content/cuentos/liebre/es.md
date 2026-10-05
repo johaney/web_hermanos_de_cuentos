@@ -12,6 +12,7 @@ preguntas:
   - "¿Qué hizo la liebre cuando iba muy por delante en la carrera?"
   - "¿Por qué crees que ganó la tortuga, aunque era más lenta?"
   - "¿Qué estás aprendiendo paso a paso?"
+youtube: 2YWaouvGjbM
 ---
 La liebre corría tan rápido que se burlaba de la tortuga. Un día la tortuga le propuso una carrera. Los animales del bosque se reunieron para verlas partir.
 
